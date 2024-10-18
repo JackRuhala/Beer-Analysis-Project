@@ -14,18 +14,11 @@ st.set_page_config(page_title='Single Beer Analysis')
 ###-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------###
 # Load in data
 
-# Desktop file locations
-# BEER_df = pd.read_csv(r'C:\Users\jrruh\OneDrive\Documents\Homework\Data Sciance\CSME 830\Project 1\Streamlit Beer Page files\Beer_df')
-# BEER_TSNE_df = pd.read_csv(r'C:\Users\jrruh\OneDrive\Documents\Homework\Data Sciance\CSME 830\Project 1\Streamlit Beer Page files\BEER_TSNE_df')
-
-# laptop file locations
-BEER_df = pd.read_csv(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\Beer_df')
-BEER_TSNE_df = pd.read_csv(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\BEER_TSNE_df')
-
-#Git hub file locations
+# Git hub file locations
 BEER_df = pd.read_csv(r'Streamlit Beer Page files/Beer_df')
-BEER_TSNE_df = pd.read_csv(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\BEER_TSNE_df')
+BEER_TSNE_df = pd.read_csv(r'Streamlit Beer Page files/BEER_TSNE_df')
 
+# Spicifics on how the information was create is located in IDA and EDA files
 
 ###-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------###
 
@@ -458,11 +451,9 @@ st.markdown('''
          ''')
 st.write('So what do these correlating factors look like in a paired plot? Well... its not pretty to look at.')
 
-# Place holder pair plot
-# DeskTop
-# st.image(r'C:\Users\jrruh\OneDrive\Documents\Homework\Data Sciance\CSME 830\Project 1\Streamlit Beer Page files\Atribute Corr Pairplot.png', use_column_width=True)
+# Pair plot image
 
-# Laptop
+# Github
 st.image(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\Atribute Corr Pairplot.png', use_column_width=True)
 
 st.write('The big idea from the pairplot is to show most of the bivariate analysis data is not liner when including all of the data, therefore correlations between attributes should be taken with a grain of salt.')
@@ -488,11 +479,14 @@ st.write('''
 
 BEER_PCA_df = BEER_df[['Brewing Style', 'ABV', 'Min IBU', 'Max IBU', 'Style Color Mean (SRM)', 'Astringency', 'Body', 'Alcohol', 'Bitter', 'Sweet', 'Sour', 'Salty', 'Fruits', 'Hoppy', 'Spices', 'Malty', 'Style_Group']]
 
+# specify values to use for PCA
 X = BEER_PCA_df[['ABV', 'Min IBU', 'Max IBU', 'Style Color Mean (SRM)', 'Astringency', 'Body', 'Alcohol', 'Bitter', 'Sweet', 'Sour', 'Salty', 'Fruits', 'Hoppy', 'Spices', 'Malty']]
 
+# Number of component set to 2
 pca = PCA(n_components=2)
 components = pca.fit_transform(X)
 
+# Allow user to adjust the graph size to there screen
 user_input_width = st.text_input('Scale the width of the plot to your screen:', 1000)
 user_input_height = st.text_input('Scale the height of the plot to your screen:', 1000)
 try:
@@ -533,7 +527,7 @@ st.write('''Above is a scatter plot of PCA components 0 and 1.
 ###------------------------------------------###
 
 # TSNE plot
-
+# The TSNE Peramiters should be located in the EDA file of the project. The TSNE is not avalibe here due to the fact it needs to re calculate components every time the app is run.
 st.title('T-SNE Plot Grouped by Beer Style')
 
 st.write('''
