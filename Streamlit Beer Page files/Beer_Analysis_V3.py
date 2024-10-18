@@ -23,7 +23,7 @@ BEER_df = pd.read_csv(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Proje
 BEER_TSNE_df = pd.read_csv(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\BEER_TSNE_df')
 
 #Git hub file locations
-BEER_df = pd.read_csv(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\Beer_df')
+BEER_df = pd.read_csv(r'Streamlit Beer Page files/Beer_df')
 BEER_TSNE_df = pd.read_csv(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\BEER_TSNE_df')
 
 
