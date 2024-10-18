@@ -29,8 +29,9 @@ st.write('Welcome to Good Beer. Here we explore a small subset of beer rankings 
          'When your ready, scroll down to see what attributes are impotent in making a good beer. '
          'Majority of data used in this app was pulled from the form a 2021 log from the website *BeerAdvocate*')
 
+# Changed some of the Column names of the origanal data for user clarity.
 BEER_df = BEER_df.rename(columns={'Name': 'Name of Beer', 'Style_x':'Brewing Style', 'Style Color Mean': 'Style Color Mean (SRM)', 'Style Color Var':'Style Color Var (SRM)'})
-
+# Reorder columns for user clarity
 BEER_df = BEER_df.iloc[:,[19, 0, 3, 1, 2, 30, 5, 4, 26, 27, 6, 7, 28, 29, 20, 21, 22, 23, 24, 25, 9, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 31]]
 
 st.dataframe(BEER_df, use_container_width=True)
@@ -345,7 +346,6 @@ else:
 
 ###-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------###
 st.title('Beer Style Attribute Heatmap')
-# st.image(r"C:\Users\jrruh\OneDrive\Documents\Homework\Data Sciance\CSME 830\Project 1\Streamlit Beer Page files\matplotlib Beer style atribute heatmap.png", caption="Beer style attributes are normal distributed and organized in descending order", use_column_width=True)
 
 # Interactive heatmap through plotly
 BEER_Ave_Style_heatmap = BEER_df[['Brewing Style', 'Ave Rating', 'ABV', 'Min IBU', 'Max IBU', 'Style Color Mean (SRM)', 'Astringency', 'Body', 'Alcohol', 'Bitter', 'Sweet', 'Sour', 'Salty', 'Fruits', 'Hoppy', 'Spices', 'Malty']]
@@ -380,7 +380,6 @@ st.title('Attribute Analysis')
 st.write('In this data set 3 attributes are quantitative values from ABV, IBU, and color value measurements. ' 
         'The other 11 attributes are from qualitative values from flavor analysis. '
         'Looking at the listed attributes provided in the data table, as well as rank, in a correlation matrix produces the heat map below.')
-# Place holder heatmap image
 
 ###------------------------------------------###
 
@@ -454,7 +453,7 @@ st.write('So what do these correlating factors look like in a paired plot? Well.
 # Pair plot image
 
 # Github
-st.image(r'C:\Users\jackz\Documents\Homework\Data Sciance\830\Project 1\Streamlit Beer Page files\Atribute Corr Pairplot.png', use_column_width=True)
+st.image(r'Streamlit Beer Page files/Atribute Corr Pairplot.png', use_column_width=True)
 
 st.write('The big idea from the pairplot is to show most of the bivariate analysis data is not liner when including all of the data, therefore correlations between attributes should be taken with a grain of salt.')
 
