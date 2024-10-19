@@ -323,22 +323,44 @@ else:
 
 ###-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------###
 # Attribute Density plots
-
 st.title('Attribute Density plots')
 
-user_input = st.text_input('Enter The name of an Attribute from the table to see how the Attribute is distributed:', 'Ave Rating')
+user_input_1 = st.text_input('Enter The name of an attribute from the table to see how the attribute is distributed:', 'Ave Rating')
+user_input_2 = st.text_input('Enter The name of another attribute from the table to see how attributes one and two are distributed:', 'Attribute')
 BEER_Attributes_df = BEER_df[['Ave Rating', 'ABV', 'Min IBU', 'Max IBU', 'Style IBU Mean', 'Style OG Mean', 'Style FG Mean', 'Style Color Mean (SRM)', 'Alcohol', 'Astringency', 'Body', 'Bitter', 'Fruits', 'Hoppy', 'Malty', 'Salty', 'Sour', 'Sweet', 'Spices']]
 
-if user_input in BEER_Attributes_df.columns:
-    st.write(user_input, ': Is a Valid Attribute')
-    fig = px.histogram(BEER_Attributes_df, x = user_input, histfunc='count',
-                   marginal="box",
-                   hover_data=[user_input])
-    st.plotly_chart(fig)
-    
+if user_input_1 in BEER_Attributes_df.columns:
+    if user_input_2 in BEER_Attributes_df.columns:
+        st.write(user_input_1, ': Is a Valid Attribute')
+        st.write(user_input_2, ': Is a Valid Attribute')
+        fig1 = px.scatter(BEER_Attributes_df, x = user_input_1, y = user_input_2,
+                hover_data=[user_input_1])
+        st.plotly_chart(fig1)
+    else:
+        st.write(user_input_1, ': Is a Valid Attribute')
+        st.write(user_input_2, ': Is Not a Valid Attribute')
+        fig2 = px.histogram(BEER_Attributes_df, x = user_input_1, histfunc='count',
+                marginal="box",
+                hover_data=[user_input_1])
+        st.plotly_chart(fig2)
 
 else:
-    st.write(user_input, ': Is Not a Valid Attribute')
+    st.write(user_input_1, ': Is Not a Valid Attribute')
+
+# Old code incase new code dose not work
+# user_input = st.text_input('Enter The name of an Attribute from the table to see how the Attribute is distributed:', 'Ave Rating')
+# BEER_Attributes_df = BEER_df[['Ave Rating', 'ABV', 'Min IBU', 'Max IBU', 'Style IBU Mean', 'Style OG Mean', 'Style FG Mean', 'Style Color Mean (SRM)', 'Alcohol', 'Astringency', 'Body', 'Bitter', 'Fruits', 'Hoppy', 'Malty', 'Salty', 'Sour', 'Sweet', 'Spices']]
+
+# if user_input in BEER_Attributes_df.columns:
+#     st.write(user_input, ': Is a Valid Attribute')
+#     fig = px.histogram(BEER_Attributes_df, x = user_input, histfunc='count',
+#                    marginal="box",
+#                    hover_data=[user_input])
+#     st.plotly_chart(fig)
+    
+
+# else:
+#     st.write(user_input, ': Is Not a Valid Attribute')
 
 ###-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------###
 st.title('Beer Style Attribute Heatmap')
